@@ -1,6 +1,25 @@
 # PostgreSQL Cheat-Sheet
 PostgreSQL or also known as Postgres, is a free and open-source relational database management system. PostgreSQL features transactions with Atomicity, Consistency, Isolation, Durability (ACID) properties automatically updatable views, materialized views, triggers, foreign keys, and stored procedures. It is designed to handle a range of workloads, from single machines to data warehouses or web services with many concurrent users.
 
+## Install latest PostgreSQL, with PostGIS if needed on Rocky Linux 9
+The default repo doesn't host the latest version or add-ons such as PostGIS (see [origin link](https://people.planetpostgresql.org/devrim/index.php?/archives/119-How-to-install-PostgreSQL-and-PostGIS-on-Rocky-Linux-9.html) )
+
+```bash
+  # disable the built-in postgres to avoid conflict
+  dnf -qy module disable postgresql
+  # add epel and postgresql.org repo
+  dnf -y install epel-release
+  dnf -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+  # enable Code Ready Builder
+  dnf -y config-manager --set-enabled crb
+  # Install PostgreSQL and GIS (or other packages)
+  dnf -y install postgis32_14
+  # Start/enable the service
+  systemctl enable --now postgresql-14
+    
+```
+  
+
 ## Install PostgreSQL 12 on Ubuntu 20.04 LTS
 ```bash
 sudo apt update
