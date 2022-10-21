@@ -20,3 +20,7 @@ vert.version = 2.2-d
 
 # Manuals
 [Tech Manual - Local](obsidian://open?vault=cheat-sheets&file=apps%2Fcmdbuild%2Ftechnical-manual-in-english.pdf)  - [Latest/Remote](https://www.cmdbuild.org/file/manuali/technical-manual-in-english)
+
+# External Software
+## Required
+[PostgreSQL](obsidian://open?vault=cheat-sheets&file=databases%2Fpostgres) with PostGIS 
