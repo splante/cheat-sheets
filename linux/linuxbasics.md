@@ -5,6 +5,8 @@
 ```bash
 hostnamectl set-hostname newhostname
 ```
+
+
 ## Change IP Address in Ubuntu 20.04 LTS
 1. Create a new file `/etc/netplan/01-netcfg.yaml`
 ```yaml
