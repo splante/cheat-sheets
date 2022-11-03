@@ -27,9 +27,16 @@ Check if the machines has Reduxio 3.4 RD14 installed first, in this case you don
 	10.  Login with username: root and password: disc|dia
 	11.  Do service reduxio killall on both controllers, first bottom one, then top one, do it quickly, so the controllers won't kill each other head.
 	12.  Format the Bottom controller as Active controller and use the serial number which you can find on TOP of the box with silver sticker which has the following format: af4032f00**1a2**000e, you will need to extract the **1a2** HEX number and convert it to decimal format using a calculator or this website: [https://www.binaryhexconverter.com/hex-to-decimal-converter](https://www.binaryhexconverter.com/hex-to-decimal-converter) in this case the HEX number **1a2** is converted to **418** (that’s the number you would need to use while formatting)
-	13.  Format the BOTTOM controller: format-system -env prod --activateProductionFlags -s 418
+	13.  Format the BOTTOM controller: 
+	    ```bash
+format-system -env prod --activateProductionFlags -s 418
+```
 	14.  Don’t reboot yet
-	15.  Format the Top controller as Passive (move the VGA and keyboard):                                    format-system -p -env prod --activateProductionFlags -s 418 (note the -p option for Passive)
+	15.  Format the Top controller as Passive (move the VGA and keyboard):  
+   	     *(note the **-p** option for Passive)*
+```bash
+format-system -p -env prod --activateProductionFlags -s 418
+  ```
 	16.  Connect the VGA + Keyboard to Bottom controller again
 	17.  Get the storsense keys from Active controller. Get a fresh FAT16 or FAT32 formatted disk-on-key and insert it to Bottom Active controller
 	
