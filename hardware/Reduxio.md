@@ -39,7 +39,6 @@ format-system -p -env prod --activateProductionFlags -s 418
   ```
 	16.  Connect the VGA + Keyboard to Bottom controller again
 	17.  Get the storsense keys from Active controller. Get a fresh FAT16 or FAT32 formatted disk-on-key and insert it to Bottom Active controller
-	
 		1.  As root user and password: disc|dia
 		2.  Find the disk-on-key and his corresponding device id; lsscsi (it should appear - usually as /dev/sdac)
 		3.  mkdir /mnt/keys
@@ -47,10 +46,9 @@ format-system -p -env prod --activateProductionFlags -s 418
 		5.  cp /reduxio/persist/sotrsense/keys/* /mnt/keys/
 		6.  umount /mnt/keys
 		7.  Send the keys to [support-team@reduxio.com](mailto:support-team@reduxio.com) and [daniel@reduxio.com](mailto:daniel@reduxio.com) specifying serial number we will register it on storsense
-	
-	19.  Reboot active controller and then passive controller using connected keyboard and VGA monitor
-	20.  Wait the machines to come up with ActiveDualSemiStopState (you should see the message on VGA screen
-	21.  Power off Reduxio wait for it to properly shutdown
-	22.  Machine is ready for deployment
-	23.  After installing it onsite, please perform field upgrade using 4.0
-	24.  Enable storsense from CLI or GUI after installation is completed
+	18.  Reboot active controller and then passive controller using connected keyboard and VGA monitor
+	19.  Wait the machines to come up with ActiveDualSemiStopState (you should see the message on VGA screen
+	20.  Power off Reduxio wait for it to properly shutdown
+	21.  Machine is ready for deployment
+	22.  After installing it onsite, please perform field upgrade using 4.0
+	23.  Enable storsense from CLI or GUI after installation is completed
