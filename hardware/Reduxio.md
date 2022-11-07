@@ -52,3 +52,18 @@ format-system -p -env prod --activateProductionFlags -s 418
 	21.  Machine is ready for deployment
 	22.  After installing it onsite, please perform field upgrade using 4.0
 	23.  Enable storsense from CLI or GUI after installation is completed
+
+
+If drive encryption was turned on, then a file containing serial:PSID must be created and passed as an argument to format-system. The serial number and PSID can be found printed on the drive label, however I found the serial number was often (but not always) truncated. Using the following, I was able to read the drive serial numbers, then match them in vi with the truncated versions from the label:
+
+```bash
+for drive in e f g h i j k l m n o p q r s t u v w x y z aa ab;
+do udevadm info --query=all --name=/dev/sd${drive} | 
+	grep SCSI_IDENT_SERIAL;
+done | sed 's/^.*=//' | tee serials.tmp
+```
+
+Example format with serial/PSID file: 
+```bash
+format-system -env prod --activateProductionFlags -s 399 --psid_file_path /home/rat/snpsid.txt
+```
