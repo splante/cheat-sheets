@@ -67,6 +67,8 @@ done | sed 's/^.*=//' | tee serials.tmp
 Example format with serial/PSID file: 
 ```bash
 format-system -env prod --activateProductionFlags -s 399 --psid_file_path /home/rat/snpsid.txt
+# and
+format-system -p -env prod --activateProductionFlags -s 399 --psid_file_path /home/rat/snpsid.txt
 ```
 
 ```bash
