@@ -67,3 +67,4 @@ Example format with serial/PSID file:
 ```bash
 format-system -env prod --activateProductionFlags -s 399 --psid_file_path /home/rat/snpsid.txt
 ```
+
