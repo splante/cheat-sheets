@@ -68,3 +68,6 @@ Example format with serial/PSID file:
 format-system -env prod --activateProductionFlags -s 399 --psid_file_path /home/rat/snpsid.txt
 ```
 
+```bash
+lsscsi|grep ST200|awk '{print $6}'|while read dev;do sginfo -a $dev|grep Serial;done
+```
