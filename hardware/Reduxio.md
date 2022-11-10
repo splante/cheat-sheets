@@ -32,16 +32,23 @@ If either controller doesn't have 3.4 RD14, or you need to reimage for another r
 ## Proceed with System Format
 1.  Login with username: root and password: disc|dia
 2.  Do service reduxio killall on both controllers, first bottom one, then top one, do it quickly, so the controllers won't kill each other head.
-3. Format the Bottom controller as Active controller and use the serial number which you can find on TOP of the box with silver sticker which has the following format: af4032f00**1a2**000e, you will need to extract the **1a2** HEX number and convert it to decimal format using a calculator or this website: [https://www.binaryhexconverter.com/hex-to-decimal-converter](https://www.binaryhexconverter.com/hex-to-decimal-converter) in this case the HEX number **1a2** is converted to **418** (that’s the number you would need to use while formatting)
+3. Format the Bottom controller as Active controller and use the serial number which you can find on TOP of the box with silver sticker which has the following format: af4032f00**1a2**000e, you will need to extract the **1a2** HEX number and convert it to decimal format:  
+  ```bash
+	$ RDXSER=$(( 0x1a2 ))''
+	$ echo $RDXSER
+	418
+  ```  
+  (*alternatively, you can use [binaryhexconverter.com](https://www.binaryhexconverter.com/hex-to-decimal-converter)*)
+  In this case the HEX number **1a2** is converted to **418** (that’s the number you would need to use while formatting)
 4. Format the BOTTOM controller: 
 ```bash
-format-system -env prod --activateProductionFlags -s 399
+format-system -env prod --activateProductionFlags -s $RDXSER
 ```
-5.  Don’t reboot yet
+5.  Don’t reboot yet!
 6.  Format the Top controller as Passive (move the VGA and keyboard):  
 	 *(note the **-p** option for Passive)*
 ```bash
-format-system -p -env prod --activateProductionFlags -s 399
+format-system -p -env prod --activateProductionFlags -s $RDXSDR
 ```
 
 7.  Connect the VGA + Keyboard to Bottom controller again
