@@ -47,6 +47,16 @@ And the next line.
 3. Third item
 ```
 
+1.  first
+2.  second
+3.  third
+    1.  three-dot-one
+    2.  three-dot-2.5
+    3.  three-dot-two
+4.  fourth
+5.  fifth
+6.  sixth
+
 #### Unordered Lists
 ```markdown
 - First item
