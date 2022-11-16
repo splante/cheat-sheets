@@ -78,6 +78,18 @@ do udevadm info --query=all --name=/dev/sd${drive} |
 done | sed 's/^.*=//' | tee serials.tmp
 ```
 
+Alternatives to gather long serial numbers for '''snspid.txt''' file:
+```bash
+lsscsi|grep ST200|awk '{print $6}' |
+while read dev;
+do 
+  sginfo -a $dev|grep Serial;
+done
+# **OR**
+lsscsi | awk '/ST2000/ {print $6};/S841E/{print $6}' |
+	xargs -n1 sginfo -a|sed -n "s/Serial Number '\(.*\)'$/\1/p"
+```
+
 Example format with serial/PSID file: 
 ```bash
 format-system -env prod --activateProductionFlags -s 399 --psid_file_path /home/rat/snpsid.txt
@@ -85,13 +97,6 @@ format-system -env prod --activateProductionFlags -s 399 --psid_file_path /home/
 format-system -p -env prod --activateProductionFlags -s 399 --psid_file_path /home/rat/snpsid.txt
 ```
 
-```bash
-lsscsi|grep ST200|awk '{print $6}' |
-while read dev;
-do 
-  sginfo -a $dev|grep Serial;
-done
-```
 
 Instead of trying to do the ```service reduxio killall``` immediately upon boot above, can disable before reboot and re-enable reduxio and after system-format.
 
