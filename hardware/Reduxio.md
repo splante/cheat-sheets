@@ -88,3 +88,16 @@ format-system -p -env prod --activateProductionFlags -s 399 --psid_file_path /ho
 ```bash
 lsscsi|grep ST200|awk '{print $6}'|while read dev;do sginfo -a $dev|grep Serial;done
 ```
+
+```bash
+# current rc.d reduxio links:
+ls -l /etc/rc?.d/*reduxio*
+lrwxrwxrwx 1 root root 25 Oct 15  2018 /etc/rc2.d/S99wrapper-reduxio -> ../init.d/wrapper-reduxio
+lrwxrwxrwx 1 root root 25 Oct 15  2018 /etc/rc3.d/S99wrapper-reduxio -> ../init.d/wrapper-reduxio
+lrwxrwxrwx 1 root root 25 Oct 15  2018 /etc/rc4.d/S99wrapper-reduxio -> ../init.d/wrapper-reduxio
+lrwxrwxrwx 1 root root 25 Oct 15  2018 /etc/rc5.d/S99wrapper-reduxio -> ../init.d/wrapper-reduxio
+# Disable on startup
+update-rc.d -f wrapper-reduxio remove
+# Add back
+update-rc.d -f wrapper-reduxio start 99 2 3 4 5 .
+```
