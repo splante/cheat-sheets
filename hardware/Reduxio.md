@@ -86,9 +86,16 @@ format-system -p -env prod --activateProductionFlags -s 399 --psid_file_path /ho
 ```
 
 ```bash
-lsscsi|grep ST200|awk '{print $6}'|while read dev;do sginfo -a $dev|grep Serial;done
+lsscsi|grep ST200|awk '{print $6}' |
+while read dev;
+do 
+  sginfo -a $dev|grep Serial;
+done
 ```
 
+Instead of trying to do the ```service reduxio killall``` immediately upon boot above, can disable before reboot and re-enable reduxio and after system-format.
+
+```
 ```bash
 # current rc.d reduxio links:
 ls -l /etc/rc?.d/*reduxio*
