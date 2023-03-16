@@ -113,3 +113,11 @@ update-rc.d -f wrapper-reduxio remove
 # Add back
 update-rc.d -f wrapper-reduxio start 99 2 3 4 5 .
 ```
+
+## Diagnostic commands:
+- ```rstatus```
+ shows all reduxio hardware statuses including disks, raid status (OK, REBUILDING, etc) for both canisters. Correlates physical slots with devices (/dev names shuffle as you add/remove drives). "smart-data" indicates devices in yellow with health issues.
+- ```smartctl -a $dev|grep 'SMART Health Status'```
+  check health status on a drive (device) identified in "smart-data" section above
+- ```reds```
+  shows critical hardware or services
